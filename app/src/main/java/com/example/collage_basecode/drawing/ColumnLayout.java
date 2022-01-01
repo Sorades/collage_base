@@ -7,12 +7,12 @@ public class ColumnLayout extends BaseVisualElement {
 
     @Override
     public void doLayout() {
-        float posCount = y;
+        float posCount = 0;
         for (VisualElement child : children) {
-            child.setX(x + (width - child.getW()) / 2);
+            child.setX((width - child.getW()) / 2);
             child.setY(posCount);
             posCount += child.getH();
+            child.doLayout();
         }
-        super.doLayout();
     }
 }

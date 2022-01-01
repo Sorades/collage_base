@@ -8,8 +8,8 @@ public class PileLayout extends BaseVisualElement {
     @Override
     public void doLayout() {
         children.forEach(child -> {
-            child.setPosition(x, y);
+            child.setPosition(0, 0);
+            child.doLayout();
         });
-        super.doLayout();
     }
 }

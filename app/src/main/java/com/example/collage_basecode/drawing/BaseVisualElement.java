@@ -10,15 +10,14 @@ import androidx.annotation.NonNull;
 import java.util.LinkedList;
 
 
-public class BaseVisualElement extends PrebaseVisualElement {
-    float x;
-    float y;
+public abstract class BaseVisualElement extends PrebaseVisualElement {
+    float x;    // left-top dot x
+    float y;    // left-top dot y
     float width;
     float height;
-    VisualElement parent;
-    LinkedList<VisualElement> children = new LinkedList<>();
-    int color;
-    Paint mPaint = new Paint();
+    VisualElement parent = null;  // parent object
+    LinkedList<VisualElement> children = new LinkedList<>();    // children objects
+    Paint mPaint = new Paint();     // paint object, for draw
 
     public BaseVisualElement() {
     }
@@ -169,19 +168,20 @@ public class BaseVisualElement extends PrebaseVisualElement {
     public void draw(Canvas onCanvas) {
         onCanvas.save();
         onCanvas.clipRect(new RectF(x, y, x + width, y + height));
+        onCanvas.translate(x,y);
+
+        drawIn(onCanvas);
+
         children.forEach(child -> child.draw(onCanvas));
         onCanvas.restore();
     }
 
-    @NonNull
     @Override
-    public String toString() {
-        return this.getClass() + "{" +
-                "x=" + x +
-                ", y=" + y +
-                ", width=" + width +
-                ", height=" + height +
-                ", color=" + color +
-                '}';
+    public boolean sizeIsIntrinsic() {
+        return super.sizeIsIntrinsic();
     }
+
+    protected void drawIn(Canvas onCanvas) {
+    }
+
 }

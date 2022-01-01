@@ -10,12 +10,11 @@ public class SimpleFrame extends BaseVisualElement {
         super(xLoc, yLoc, width, height);
         mPaint.setColor(Color.BLACK);
         mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeWidth(2);
+        mPaint.setStrokeWidth(4); // 1像素不够明显
     }
 
     @Override
-    public void draw(Canvas onCanvas) {
-        onCanvas.drawRect(x, y, x+width, y+height, mPaint);
-        super.draw(onCanvas);
+    public void drawIn(Canvas onCanvas) {
+        onCanvas.drawRect(0, 0, width, height, mPaint);
     }
 }

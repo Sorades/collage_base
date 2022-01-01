@@ -9,12 +9,12 @@ public class RowLayout extends BaseVisualElement {
 
     @Override
     public void doLayout() {
-        float posCount = x;
+        float posCount = 0;
         for (VisualElement child : children) {
-            child.setY(y + (height - child.getH()) / 2);// vertically centered
+            child.setY((height - child.getH()) / 2);// vertically centered
             child.setX(posCount);
             posCount += child.getW();
+            child.doLayout();
         }
-        super.doLayout();
     }
 }

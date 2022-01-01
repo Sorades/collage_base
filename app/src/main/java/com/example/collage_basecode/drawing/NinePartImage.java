@@ -17,8 +17,17 @@ public class NinePartImage extends BaseVisualElement {
 
     @RequiresApi(api = Build.VERSION_CODES.S)
     @Override
-    public void draw(Canvas onCanvas) {
-        onCanvas.drawPatch(patches, new RectF(x, y, x + width, y + height), mPaint);
-        super.draw(onCanvas);
+    public void drawIn(Canvas onCanvas) {
+        onCanvas.drawPatch(patches, new RectF(0, 0, width, height), mPaint);
     }
+
+    //<editor-fold desc="Getter & Setter">
+    public NinePatch getPatches() {
+        return patches;
+    }
+
+    public void setPatches(NinePatch patches) {
+        this.patches = patches;
+    }
+    //</editor-fold>
 }

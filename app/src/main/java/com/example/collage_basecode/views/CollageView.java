@@ -166,7 +166,7 @@ public class CollageView extends View {
 		if (child != null) {
 
 			// do a layout of the child
-//			child.doLayout();
+			child.doLayout();
 
 			// set up coordinate system and clipping for it
 			drawCanvas.translate(child.getX(), child.getY());

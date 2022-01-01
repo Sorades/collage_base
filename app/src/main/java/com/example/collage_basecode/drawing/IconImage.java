@@ -9,13 +9,29 @@ public class IconImage extends BaseVisualElement {
     public IconImage(float xLoc, float yLoc, Bitmap bitmap) {
         super(xLoc, yLoc);
         this.bitmap = bitmap;
-        width=bitmap.getWidth();
-        height=bitmap.getHeight();
+        width = bitmap.getWidth();
+        height = bitmap.getHeight();
     }
 
     @Override
-    public void draw(Canvas onCanvas) {
-        onCanvas.drawBitmap(bitmap, getX(), getY(), mPaint);
-        super.draw(onCanvas);
+    public boolean sizeIsIntrinsic() {
+        return true;
     }
+
+    @Override
+    public void drawIn(Canvas onCanvas) {
+        if (bitmap == null)
+            throw new NullPointerException("bitmap is empty");
+        onCanvas.drawBitmap(bitmap, 0, 0, mPaint);
+    }
+
+    //<editor-fold desc="Getter & Setter">
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
+    }
+    //</editor-fold>
 }

@@ -11,10 +11,11 @@ public class OvalClip extends BaseVisualElement {
     @Override
     public void draw(Canvas onCanvas) {
         onCanvas.save();
-        Path mPath = new Path();
-        mPath.addOval(x, y, x + width, y + height, Path.Direction.CW);
-        onCanvas.clipPath(mPath);
+        Path ovalPath = new Path();
+        ovalPath.addOval(x, y, x + width, y + height, Path.Direction.CW);
+        onCanvas.clipPath(ovalPath);
         onCanvas.translate(x, y);
+
         children.forEach(child -> child.draw(onCanvas));
         onCanvas.restore();
     }
